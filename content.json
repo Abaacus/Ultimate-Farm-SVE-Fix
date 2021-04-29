@@ -1,0 +1,188 @@
+﻿{
+    "Format": "1.21",
+    "ConfigSchema": {
+        "UseWorldMap": {
+            "AllowValues": "true, false",
+            "Default": "true"
+        }
+    },
+    "Changes": [
+        //maps
+        {
+            "Action": "Load",
+            "Target": "Maps/Farm_Fishing",
+            "FromFile": "assets/Farm.tbin"
+        },
+        {
+            "Action": "Load",
+            "Target": "Maps/FarmCave",
+            "FromFile": "assets/FarmCave.tbin",
+            "When": {
+                "FarmType": "Riverland"
+            }
+        },
+        //add tilesheet
+        {
+            "Action": "Load",
+            "Target": "Maps/signs",
+            "FromFile": "assets/signs.png"
+        },
+        //arrows
+        {
+            "Action": "EditImage",
+            "Target": "LooseSprites/font_bold",
+            "FromFile": "assets/arrows.png",
+            "ToArea": {
+                "X": 88,
+                "Y": 48,
+                "Width": 40,
+                "Height": 48
+            },
+            "When": {
+                "LocationName": "Farm",
+                "FarmType": "Riverland"
+            }
+        },
+        //arrows - overgrown flowery interface
+        {
+            "Action": "EditImage",
+            "Target": "LooseSprites/font_bold",
+            "FromFile": "assets/arrows-floweryinterface.png",
+            "ToArea": {
+                "X": 88,
+                "Y": 48,
+                "Width": 40,
+                "Height": 48
+            },
+            "When": {
+                "LocationName": "Farm",
+                "FarmType": "Riverland",
+                "HasMod": "Amaryn.OvergrownFloweryInterface"
+            }
+        },
+        //world map
+        {
+            "Action": "EditImage",
+            "Target": "LooseSprites/map",
+            "FromFile": "assets/map_vanilla.png",
+            "ToArea": {
+                "X": 0,
+                "Y": 180,
+                "Width": 131,
+                "Height": 61
+            },
+            "When": {
+                "UseWorldMap": "true",
+                "HasMod": "DaisyNiko.EarthyRecolour"
+            }
+        },
+        {
+            "Action": "EditImage",
+            "Target": "LooseSprites/map",
+            "FromFile": "assets/{{season}}_map_dner.png",
+            "ToArea": {
+                "X": 0,
+                "Y": 180,
+                "Width": 131,
+                "Height": 61
+            },
+            "When": {
+                "UseWorldMap": "true",
+                "HasMod": "DaisyNiko.EarthyRecolour"
+            }
+        },
+        //warps - vanilla
+        {
+            "Action": "EditMap",
+            "Target": "Maps/BusStop",
+            "AddWarps": [
+                "-1 22 Farm 118 18",
+                "-1 23 Farm 118 18",
+                "-1 24 Farm 118 18",
+                "-1 25 Farm 118 18"
+            ],
+            "When": {
+                "FarmType": "Riverland"
+            }
+        },
+        {
+            "Action": "EditMap",
+            "Target": "Maps/Forest",
+            "AddWarps": [
+                "67 -1 Farm 40 73",
+                "68 -1 Farm 40 73",
+                "69 -1 Farm 40 73",
+                "70 -1 Farm 40 73",
+                "71 -1 Farm 40 73",
+                "72 -1 Farm 40 73"
+            ],
+            "When": {
+                "FarmType": "Riverland",
+            }
+        },
+        //warps - sve
+        {
+            "Action": "EditMap",
+            "Target": "Maps/ForestPatch",
+            "AddWarps": [
+                "67 -1 Farm 40 73",
+                "68 -1 Farm 40 73",
+                "69 -1 Farm 40 73",
+                "70 -1 Farm 40 73",
+                "71 -1 Farm 40 73",
+                "72 -1 Farm 40 73"
+            ],
+            "When": {
+                "HasFile:Maps/ForestPatch.tbin": true,
+                "HasMod": "FlashShifter.SVECode",
+                "FarmType": "Riverland"
+            }
+        },
+        //strings (english)
+        {
+            "Action": "EditData",
+            "Target": "Strings/StringsFromMaps",
+            "Entries": {
+                "uf.0": "[ {{FarmName}} Quarry^> {{FarmName}} Farm",
+                "uf.1": "CAUTION: Archaeological Dig Site^Authorised personnel only.^Direct queries to Gunther at Pelican Town Museum.",
+                "uf.2": "A dinosaur skeleton! There's a bone from a smaller animal stuck between its teeth.",
+                "uf.3": "A dinosaur skeleton! Its rib bones are taller than you are.",
+                "uf.4": "` {{FarmName}} Farm^{ Southwest Field^} Southeast Field^_ Cindersap Forest",
+                "uf.5": "` Northern Crop Fields^@ {{FarmName}} Quarry^_ Southwest Field",
+                "uf.6": "` Backwoods, Mountain^@ {{FarmName}} Farm Cave",
+                "uf.7": "{{FarmName}} Farm Shipping Bin^All items to be sold at the end of the day.",
+                "uf.8": "@ {{FarmName}} Farm^> Bus Stop",
+                "uf.9": "` Northern Crop Fields^> Livestock Pens^} {{FarmName}} Lake",
+                "uf.10": "` To Cindersap Forest^> Upper Southeast Field^_ Lower Southeast Field",
+                "cave.0": "Woodland Meadow",
+                "cave.1": "Farm Quarry",
+                "cave.2": "{{FarmName}} Lake"
+            }
+        },
+        //translations
+        // (chinese - KSmorningstar)
+        {
+            "Action": "EditData",
+            "Target": "Strings/StringsFromMaps",
+            "Entries": {
+                "uf.0": " {{FarmName}} 采石场^> {{FarmName}} 农场",
+                "uf.1": "注意：考古学发掘现场^闲人免进。",
+                "uf.2": "恐龙骨头！ 在牙齿之间有另一只恐龙的骨头。",
+                "uf.3": "哇!比我的肋骨大好几倍。",
+                "uf.4": "` {{FarmName}} 农场^西南部地区^_ 灰烬森林",
+                "uf.5": "` 北部农场地区^@ {{FarmName}} 采石场^_ 西南部地区",
+                "uf.6": "` 偏远山区^@ {{FarmName}} 农场洞穴",
+                "uf.7": "{{FarmName}} 农场出货箱^一天结束后会出售箱内所有物品。",
+                "uf.8": "@ {{FarmName}} 农场^> 公共汽车站",
+                "uf.9": "` 北部作物区^> 牲畜围栏^ {{FarmName}} 湖",
+                "uf.10": "` 灰烬森林^> 高西南部地区^_ 低西南部地区",
+                "cave.0": "森林草场",
+                "cave.1": "{{FarmName}} 采石场",
+                "cave.2": "{{FarmName}} 湖"
+            },
+            "When": {
+                "language": "zh"
+            }
+        }
+    ]
+}
